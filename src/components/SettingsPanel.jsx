@@ -122,69 +122,6 @@ export function SettingsPanel({ settings }) {
           {rowSwitch("关闭主窗口时最小化到托盘", "closeToTray")}
           {rowSwitch("隐藏主窗口任务栏图标", "hideMainWindowTaskbar")}
           {rowSwitch("隐藏桌面便签任务栏图标", "hideWidgetTaskbar")}
-
-          <TextField
-            select
-            label="新便签默认风格"
-            value={draft.defaultStyle}
-            onChange={(event) =>
-              updateField({ defaultStyle: event.target.value })
-            }
-          >
-            {NOTE_VARIANTS.map((item) => (
-              <MenuItem key={item.value} value={item.value}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </TextField>
-
-          <Box>
-            <Typography fontWeight={600} sx={{ mb: 1 }}>
-              新便签默认强调色
-            </Typography>
-            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              {ACCENT_PRESETS.map((color) => (
-                <Box
-                  key={color}
-                  onClick={() => updateField({ defaultAccentColor: color })}
-                  sx={{
-                    width: 30,
-                    height: 30,
-                    bgcolor: color,
-                    borderRadius: "50%",
-                    cursor: "pointer",
-                    border:
-                      draft.defaultAccentColor === color
-                        ? "3px solid white"
-                        : "1px solid rgba(255,255,255,0.3)",
-                    boxShadow:
-                      draft.defaultAccentColor === color
-                        ? "0 0 0 2px rgba(124,77,255,0.7)"
-                        : "none",
-                  }}
-                />
-              ))}
-              <Box
-                component="label"
-                sx={{ display: "inline-flex", cursor: "pointer" }}
-              >
-                <input
-                  type="color"
-                  value={draft.defaultAccentColor}
-                  onChange={(event) =>
-                    updateField({ defaultAccentColor: event.target.value })
-                  }
-                  style={{
-                    width: 30,
-                    height: 30,
-                    border: "none",
-                    background: "transparent",
-                    padding: 0,
-                  }}
-                />
-              </Box>
-            </Stack>
-          </Box>
         </Stack>
       </Paper>
 
